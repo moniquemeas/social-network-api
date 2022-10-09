@@ -4,7 +4,10 @@ const userController = {
     //get all user
     getAllUser(req, res) {
         User.find({})
-        .then(dbUserData => res.json(dbUserData))
+        .then(dbUserData => {
+            console.log(dbUserData)
+            res.json(dbUserData)
+            })
         .catch(err => {
             console.log(err);
             res.sendStatus(400);
@@ -76,7 +79,7 @@ const userController = {
     deleteFriend(req, res) {
         User.findOneAndUpdate(
             {_id: req.params.userId},
-            {$pull: {friends: req.params.friedId}},
+            {$pull: {friends: req.params.friendId}},
             {new: true}
         )
         .then(dbUserData => {
