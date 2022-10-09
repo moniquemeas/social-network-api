@@ -17,7 +17,7 @@ const ReactionSchema = new Schema ({
         required: true
     },
     createdAt:{
-        tyep: Date,
+        type: Date,
         default: Date.now,
        get: createdAtVal => moment(createdAtVal).format('MMM DD, YYYY [at] HH:mm a'),
     }
@@ -38,7 +38,7 @@ const ThoughtsSchema = new Schema({
         maxlength: 280
     },
     createdAt:{
-        tyep: Date,
+        type: Date,
         default: Date.now,
         get: createdAtVal => moment(createdAtVal).format('MMM DD, YYYY [at] HH:mm a'),
     },

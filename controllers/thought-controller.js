@@ -42,7 +42,7 @@ const thoughtsController = {
 
     //update Thought
     updateThought(req, res) {
-        Thought.findOneAndUpdate(
+        Thoughts.findOneAndUpdate(
             {_id: req.params.thoughtId},
             {$set: req.body},
             {new: true}
@@ -58,7 +58,7 @@ const thoughtsController = {
     },
     
     //delete thought
-    deleteTought({params}, res) {
+    deleteThought({params}, res) {
         Thoughts.findOneAndDelete ({_id: params.thoughtid})
         .then(dbThoughtData => {
             if(!dbThoughtData) {
@@ -109,4 +109,5 @@ const thoughtsController = {
         .catch(err => res.json(err));
     }
 
-}
+};
+module.exports = thoughtsController;
