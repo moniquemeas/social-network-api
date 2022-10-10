@@ -1,3 +1,4 @@
+const { trusted } = require('mongoose');
 const {Thoughts, User} = require('../models');
 
 const thoughtsController = {
@@ -50,7 +51,7 @@ const thoughtsController = {
         Thoughts.findOneAndUpdate(
             {_id: req.params.id},
             {$set: req.body},
-            {new: true}
+            {new: true, runValidators: true}
         )
         .then(dbThoughtData => {
             if(!dbThoughtData) {
@@ -94,7 +95,7 @@ const thoughtsController = {
         Thoughts.findOneAndUpdate(
             {_id: req.params.thoughtId},
             {$push: {reactions: req.body}},
-            {new: true}
+            {new: true, runValidators: true}
         )
         .then(dbReactionData => {
             if(!dbReactionData){
